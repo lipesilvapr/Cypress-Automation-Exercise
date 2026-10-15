@@ -1,0 +1,18 @@
+{
+  "name": "Cypress Tester",
+  "password": "Test@12345",
+  "title": "Mr",
+  "birthDate": "10",
+  "birthMonth": "May",
+  "birthYear": "1990",
+  "firstName": "Cypress",
+  "lastName": "Tester",
+  "company": "QA Inc",
+  "address1": "123 Test Street",
+  "address2": "Suite 100",
+  "country": "Canada",
+  "zipcode": "A1B2C3",
+  "state": "Ontario",
+  "city": "Toronto",
+  "mobileNumber": "5551234567"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "cypress-automation-exercise",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Testes de UI do automationexercise.com com Cypress",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:headed": "cypress run --browser chrome --headed",
+    "test:smoke": "cypress run --browser chrome --env grepTags=@smoke",
+    "allure:clean": "node -e \"const fs=require('fs');['allure-results','allure-report'].forEach(d=>fs.rmSync(d,{recursive:true,force:true}))\"",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:serve": "allure serve allure-results"
+  },
+  "devDependencies": {
+    "@cypress/grep": "^4.1.0",
+    "allure-commandline": "^2.29.0",
+    "allure-cypress": "^3.0.0",
+    "allure-js-commons": "^3.0.0",
+    "cypress": "^13.15.0"
+  }
+}

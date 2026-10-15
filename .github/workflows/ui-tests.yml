@@ -1,0 +1,37 @@
+name: UI Tests (Cypress)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          install-command: npm install
+
+      # o Allure CLI precisa de Java (já disponível no ubuntu-latest)
+      - name: Gerar relatório Allure
+        if: always()
+        run: npm run allure:generate
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-report
+          path: allure-report
+          if-no-files-found: ignore
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results
+          path: allure-results
+          if-no-files-found: ignore

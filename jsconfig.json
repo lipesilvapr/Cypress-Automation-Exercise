@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "types": ["cypress", "node"]
+  },
+  "include": ["cypress/**/*.js", "cypress.config.js"]
+}
