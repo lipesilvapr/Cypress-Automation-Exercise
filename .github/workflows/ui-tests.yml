@@ -6,18 +6,32 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   cypress:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
+      - name: Info da máquina
+        run: |
+          echo "ImageOS=$ImageOS ImageVersion=$ImageVersion"
+          nproc
+          free -m
+          df -h /
+          lscpu | grep -E "Model name|^CPU\(s\)" || true
+
       - uses: actions/checkout@v4
 
       - uses: cypress-io/github-action@v6
         with:
           browser: chrome
           install-command: npm install
+          # retries desligados durante a medição, para a instabilidade aparecer nos dados
+          config: retries=0
 
-      # o Allure CLI precisa de Java (já disponível no ubuntu-latest)
+      # o Allure CLI precisa de Java (já disponível no runner)
       - name: Gerar relatório Allure
         if: always()
         run: npm run allure:generate
