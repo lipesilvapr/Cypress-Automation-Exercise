@@ -57,6 +57,7 @@ jobs:
           junit-glob: cypress/results/*.xml
           expected-tests: "10"
           cache: ${{ inputs.use_cache || 'true' }}
+          threads: "1"
 
       - uses: actions/upload-artifact@v4
         if: always()
